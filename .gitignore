@@ -1,0 +1,61 @@
+# Node.js / NPM
+node_modules/
+npm-debug.log
+npm-error.log
+package-lock.json
+yarn-error.log
+yarn.lock
+
+# React/Angular build artifacts
+/build
+/dist
+/out
+*.log
+
+# Environment configuration files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE and Editor Folders
+/.idea
+/.vscode
+*.swp
+*.swo
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Data Files (uncomment if applicable)
+# /data
+
+# Log files
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.seed
+*.db
+
+# Other
+*.bak
+*.tmp
+*.temp
