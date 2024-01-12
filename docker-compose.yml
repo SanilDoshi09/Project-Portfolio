@@ -13,7 +13,7 @@ services:
   server:
     build: ./server
     ports:
-      - "5000:5000"
+      - "6000:5000"
     volumes:
       - ./server:/usr/src/app
       - /usr/src/app/node_modules
@@ -27,9 +27,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: finance_db
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
     volumes:
       - pgdata:/var/lib/postgresql/data
 
