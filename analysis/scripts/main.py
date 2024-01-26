@@ -4,14 +4,19 @@ import logging
 from logger import set_logger
 from database import Database
 
-def main():
-    # set logger
-    logger = set_logger("main")
-    
-    logger.info("Creating database object")
+logger = set_logger("main")
 
+# create sql tables from schema.sql file
+def create_tables(db):
+    filepath = '/usr/src/server/database/schema.sql'
+    queries = db.read_sql(filepath)
+    logger.debug("Read schema.sql file")
+
+    db.execute_queries(queries)
+
+def main():
     db = Database()
-    db.get_connection()
+    logger.debug("Created database object")
 
 if __name__ == "__main__":
     main()

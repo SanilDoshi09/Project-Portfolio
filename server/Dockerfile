@@ -13,8 +13,8 @@ RUN npm install
 # Bundle app source inside the container
 COPY . .
 
-# Make port 5000 available outside this container
-EXPOSE 5000
+# Make port 8000 available outside this container
+EXPOSE 8000
 
 # Define the command to run the app
 CMD ["node", "app.js"]

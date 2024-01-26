@@ -15,16 +15,16 @@ class Database:
         self.db_params = {
             'dbname': os.getenv('DB_NAME'),
             'user': os.getenv('DB_USER'),
-            'password': os.getenv('DB_PASSWORD'),
+            'password': os.getenv('DB_PASS'),
             'host': os.getenv('DB_HOST'),
             'port': os.getenv('DB_PORT')
         }
-        logger.info("Database object created")
+        logger.info("Database object initialized")
 
     @contextmanager
     def get_connection(self):
         # '**': unpacks the dictionary into keyword arguments
-        logger.info("Connecting to database")
+        logger.debug("Connecting to database")
         conn = psycopg2.connect(**self.db_params)
         try:
             yield conn # yield is like return, but for generators 
@@ -47,7 +47,9 @@ class Database:
                 for query in queries:
                     if query.strip():
                         cursor.execute(query)
+                        print(cursor.statusmessage)
                 conn.commit()
+                logger.debug("Executed queries")
     
     def read_sql(self, filepath):
         # read multiple queries from sql files

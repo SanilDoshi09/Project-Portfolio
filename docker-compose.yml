@@ -13,7 +13,7 @@ services:
   server:
     build: ./server
     ports:
-      - "6000:5000"
+      - "8080:8000"
     volumes:
       - ./server:/usr/src/app
       - /usr/src/app/node_modules
@@ -30,6 +30,8 @@ services:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASS}
+    env_file:
+      - .env
     volumes:
       - pgdata:/var/lib/postgresql/data
 
@@ -37,6 +39,11 @@ services:
     build: ./analysis
     volumes:
       - ./analysis:/usr/src/app
+      - ./server:/usr/src/server
+    env_file:
+      - .env
+    depends_on:
+      - db
 
 volumes:
   pgdata:
